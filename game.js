@@ -2,8 +2,8 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 // Taille de la grille
-const rows = 50;
-const cols = 50;
+const rows = 80;
+const cols = 80;
 const cellSize = 10; // Taille d'une cellule en pixels
 
 // Création de la grille
@@ -18,14 +18,30 @@ for (let i = 0; i < rows; i++) {
 // Fonction pour dessiner la grille
 function drawGrid() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "black";
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
+            ctx.fillStyle = grid[i][j] === 1 ? '#4CAF50' : '#fff';
+            ctx.beginPath();
+            ctx.rect(j * cellSize, i * cellSize, cellSize, cellSize);
+            ctx.fill();
             if (grid[i][j] === 1) {
+                ctx.shadowColor = '#45a049';
+                ctx.shadowBlur = 10;
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 0;
+                ctx.fillStyle = randomColor(); // Utiliser une couleur aléatoire pour les cellules vivantes
                 ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                ctx.shadowColor = 'transparent';
             }
         }
     }
+}
+
+// Fonction pour générer une couleur aléatoire entre le vert et le bleu cyan
+function randomColor() {
+    const green = Math.floor(Math.random() * 156) + 100; // Composante verte aléatoire (entre 100 et 255)
+    const blue = Math.floor(Math.random() * 156) + 100; // Composante bleue aléatoire (entre 100 et 255)
+    return `rgb(0, ${green}, ${blue})`; // Retourner une couleur entre le vert et le bleu cyan
 }
 
 // Fonction pour mettre à jour la grille selon les règles du jeu de la vie
@@ -64,8 +80,7 @@ function countNeighbors(x, y) {
     return count;
 }
 
-
-let gameInterval
+let gameInterval;
 // Fonction pour démarrer le jeu
 function startGame() {
     // Mettre en place une boucle de rafraîchissement
@@ -92,25 +107,25 @@ function resetGame() {
 
 // Fonction pour ajouter le motif Life à la grille
 function addLifePattern() {
-    let life = [
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0],
-        [1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0],
-        [1,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,1,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let gosperGliderGun = [
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,1],
+        [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1],
+        [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ];
 
-    // Position de départ du life 
-    let startX = 5;
-    let startY = 5;
+    // Position de départ du Gosper Glider Gun 
+    let startX = 1;
+    let startY = 1;
 
-    // Ajouter le motif life  à la grille à la position actuelle
-    for (let i = 0; i < life.length; i++) {
-        for (let j = 0; j < life[i].length; j++) {
-            grid[startY + i][startX + j] = life[i][j];
+    // Ajouter le motif Gosper Glider Gun à la grille à la position actuelle
+    for (let i = 0; i < gosperGliderGun.length; i++) {
+        for (let j = 0; j < gosperGliderGun[i].length; j++) {
+            grid[startY + i][startX + j] = gosperGliderGun[i][j];
         }
     }
 
@@ -134,16 +149,26 @@ function addExplosionPattern() {
 
 // Fonction pour ajouter le motif de la fleur à la grille
 function addFlowerPattern() {
-    
-    // Ajouter le motif de la fleur à la grille
-    let startX = Math.floor(Math.random() * (cols - 10)); // Position de départ aléatoire en x
-    let startY = Math.floor(Math.random() * (rows - 10)); // Position de départ aléatoire en y
+     let tenCellsPufferTrain = [
+        [0, 0, 1, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 1, 0, 0, 0],
+        [0, 0, 1, 1, 1, 1, 1, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 1, 1, 1, 1, 1, 0, 0],
+        [0, 0, 0, 1, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 1, 0, 0, 0, 0],
+    ];
 
-    for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
-            if ((i + j) % 2 === 0) { // Alterner les cellules vivantes pour créer le motif de la fleur
-                grid[startY + i][startX + j] = 1;
-            }
+    // Position de départ du 10-cells puffer train 
+    let startX = 1;
+    let startY = 1;
+
+    // Ajouter le motif 10-cells puffer train à la grille à la position actuelle
+    for (let i = 0; i < tenCellsPufferTrain.length; i++) {
+        for (let j = 0; j < tenCellsPufferTrain[i].length; j++) {
+            grid[startY + i][startX + j] = tenCellsPufferTrain[i][j];
         }
     }
 
@@ -161,3 +186,4 @@ document.getElementById("flowerBtn").addEventListener("click", addFlowerPattern)
 
 // Initialisation du jeu
 drawGrid();
+
