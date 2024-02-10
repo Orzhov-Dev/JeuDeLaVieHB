@@ -6,56 +6,40 @@
     <title>Jeu de la Vie</title>
     <!-- Intégration de Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            padding-top: 20px;
-        }
-
-        .canvas-container {
-            border: 2px solid #343a40;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        canvas {
-            display: block;
-            margin: auto;
-        }
-
-        .btn-custom {
-            width: 20%; /* Bouton prend 100% de la largeur */
-            margin-left: 10px; /* Espacement entre les boutons */
-            justify-content: space-between;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
     <div class="container">
         <header class="text-center mb-3">
             <h1 class="display-4">Jeu de la Vie</h1>
         </header>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center align-items-center">
             <div class="row justify-content-center mb-2">
-                <div class="col-md-8 justify-content-space-between">
-                    <div class="d-flex justify-content-start">
-                        <button id="startBtn" class="btn btn-primary btn-lg btn-custom">Start</button>
-                        <button id="stopBtn" class="btn btn-danger btn-lg btn-custom">Stop</button>
-                        <button id="resetBtn" class="btn btn-secondary btn-lg btn-custom">Reset</button>
-                        <button id="lifeBtn" class="btn btn-dark btn-lg btn-custom">Life</button>
-                        <button id="explosionBtn" class="btn btn-dark btn-lg btn-custom">Explosion</button>
-                        <button id="flowerBtn" class="btn btn-dark btn-lg btn-custom">Flower</button>
+                <div class="col-md-8">
+                    <div class="d-flex justify-content-center mb-2">
+                        <button id="startBtn" class="btn btn-primary btn-action btn-lg">Start</button>
+                        <button id="stopBtn" class="btn btn-danger btn-action btn-lg mx-2">Stop</button>
+                        <button id="resetBtn" class="btn btn-secondary btn-action btn-lg">Reset</button>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <button id="gliderBtn" class="btn btn-dark btn-lg btn-custom mx-2 mb-2">Glider</button>
+                        <button id="blinkerBtn" class="btn btn-dark btn-lg btn-custom mx-2 mb-2">Blinker</button>
+                        <button id="beaconBtn" class="btn btn-dark btn-lg btn-custom mx-2 mb-2">Beacon</button>
+                        <button id="blockBtn" class="btn btn-dark btn-lg btn-custom vmx-2 mb-2">Block</button>
+                        <button id="gliderGunBtn" class="btn btn-dark btn-lg btn-custom mx-2 mb-2">Glider Gun</button>
+                        <button id="explosionBtn" class="btn btn-dark btn-lg btn-custom mx-2 mb-2">Explosion</button>
+                        <button id="flowerBtn" class="btn btn-dark btn-lg btn-custom mx-2 mb-2">Flower</button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="canvas-container">
-                    <canvas id="gameCanvas" width="1500" height="800"></canvas>
+            <div class="col-md-12 d-flex justify-content-center align-items-center ">
+                <div class="d-block col-md-8 justify-content-center align-items-center">
+                    <div class="canvas-container">
+                        <canvas id="gameCanvas" width="800" height="800"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-        
     </div>
 
     <script src="game.js"></script>

@@ -1,15 +1,33 @@
 body {
-    background-color: #f8f9fa;
+    background-color: rgb(220, 250, 255);
     padding-top: 20px;
 }
 
 .canvas-container {
     border: 2px solid #343a40;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+    height: auto;
+    width: auto;
 }
 
 canvas {
     display: block;
+    align-items: center;
+    padding: auto;
     margin: auto;
+}
+
+.btn-custom {
+    width: 20%;
+    margin-left: 10px;
+    border:rgb(58, 228, 43) 3px solid;
+    justify-content: space-between;
+}
+.btn-action {
+    width: 33%;
+    margin-left: 10px;
+    border: black 3px solid;
+    justify-content: space-between;
 }
