@@ -90,9 +90,9 @@ function resetGame() {
     drawGrid();
 }
 
-// Fonction pour ajouter le motif Glider à la grille
-function addGliderGunPattern() {
-    let gliderGun = [
+// Fonction pour ajouter le motif Life à la grille
+function addLifePattern() {
+    let life = [
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0],
@@ -103,14 +103,14 @@ function addGliderGunPattern() {
         [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ];
 
-    // Position de départ du Glider Gun
+    // Position de départ du life 
     let startX = 5;
     let startY = 5;
 
-    // Ajouter le motif Glider Gun à la grille à la position actuelle
-    for (let i = 0; i < gliderGun.length; i++) {
-        for (let j = 0; j < gliderGun[i].length; j++) {
-            grid[startY + i][startX + j] = gliderGun[i][j];
+    // Ajouter le motif life  à la grille à la position actuelle
+    for (let i = 0; i < life.length; i++) {
+        for (let j = 0; j < life[i].length; j++) {
+            grid[startY + i][startX + j] = life[i][j];
         }
     }
 
@@ -155,7 +155,7 @@ function addFlowerPattern() {
 document.getElementById("startBtn").addEventListener("click", startGame);
 document.getElementById("stopBtn").addEventListener("click", stopGame);
 document.getElementById("resetBtn").addEventListener("click", resetGame);
-document.getElementById("gliderBtn").addEventListener("click", addGliderGunPattern);
+document.getElementById("lifeBtn").addEventListener("click", addLifePattern);
 document.getElementById("explosionBtn").addEventListener("click", addExplosionPattern);
 document.getElementById("flowerBtn").addEventListener("click", addFlowerPattern);
 
