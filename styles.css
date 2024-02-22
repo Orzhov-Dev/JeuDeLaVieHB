@@ -1,33 +1,39 @@
+/* Définition des styles pour le corps de la page */
 body {
-    background-color: rgb(220, 250, 255);
-    padding-top: 20px;
+    background-color: rgb(220, 250, 255); /* Définition de la couleur de fond */
+    padding-top: 20px; /* Ajout de marge en haut */
 }
 
+/* Styles pour le conteneur du canvas */
 .canvas-container {
-    border: 2px solid #343a40;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px;
-    height: auto;
-    width: auto;
+    border: 2px solid #343a40; /* Bordure solide de 2px avec une couleur spécifique */
+    border-radius: 10px; /* Arrondi des coins */
+    padding: 10px; /* Espace intérieur autour du contenu */
+    margin-bottom: 20px; /* Marge en bas */
+    height: auto; /* Hauteur automatique */
+    width: auto; /* Largeur automatique */
 }
 
+/* Styles pour le canvas lui-même */
 canvas {
-    display: block;
-    align-items: center;
-    padding: auto;
-    margin: auto;
+    display: block; /* Affichage en tant que bloc */
+    align-items: center; /* Alignement des éléments enfants */
+    padding: auto; /* Remplissage automatique */
+    margin: auto; /* Marge automatique */
 }
 
+/* Styles personnalisés pour les boutons */
 .btn-custom {
-    width: 20%;
-    margin-left: 10px;
-    border:rgb(58, 228, 43) 3px solid;
-    justify-content: space-between;
+    width: 20%; /* Largeur de 20% du conteneur parent */
+    margin-left: 10px; /* Marge à gauche de 10px */
+    border: rgb(58, 228, 43) 3px solid; /* Bordure personnalisée avec couleur spécifique */
+    justify-content: space-between; /* Répartition équitable de l'espace entre les éléments enfants */
 }
+
+/* Styles pour les boutons d'action */
 .btn-action {
-    width: 33%;
-    margin-left: 10px;
-    border: black 3px solid;
-    justify-content: space-between;
+    width: 33%; /* Largeur de 33% du conteneur parent */
+    margin-left: 10px; /* Marge à gauche de 10px */
+    border: black 3px solid; /* Bordure noire de 3px */
+    justify-content: space-between; /* Répartition équitable de l'espace entre les éléments enfants */
 }
